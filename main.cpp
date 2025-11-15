@@ -23,6 +23,14 @@ struct TrieNode {
     }
 };
 
+int charToIndex(char c) {
+    return tolower(c) - 'a';
+}
+
+TrieNode* createNode() {
+    return new TrieNode();
+}
+
 void insert(TrieNode* root, const string& word) {
     TrieNode* current = root;
     for (char c : word) {

@@ -48,3 +48,19 @@ bool search(TrieNode* root, const string& word) {
     }
     return current != nullptr && current->isEndOfWord;
 }
+
+bool delete(TrieNode* root, const string& word) {
+    TrieNode* current = root;
+    for (char c : word) {
+        int index = charToIndex(c);
+        if (index < 0 || index >= Alphabet_Size || current->children[index] == nullptr) {
+            return false;
+        }
+        current = current->children[index];
+    }
+    if (current != nullptr && current->isEndOfWord) {
+        current->isEndOfWord = false;
+        return true;
+    }
+    return false;
+}

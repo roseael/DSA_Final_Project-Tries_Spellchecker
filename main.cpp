@@ -34,3 +34,17 @@ void insert(TrieNode* root, const string& word) {
     }
     current->isEndOfWord = true;
 }
+
+bool search(TrieNode* root, const string& word) {
+    TrieNode* current = root;
+    for (char c : word) {
+        int index = charToIndex(c);
+        if (index < 0 || index >= Alphabet_Size) return false;
+
+        if (current->children[index] == nullptr) {
+            return false;
+        }
+        current = current->children[index];
+    }
+    return current != nullptr && current->isEndOfWord;
+}

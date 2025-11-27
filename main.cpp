@@ -72,3 +72,28 @@ bool delete(TrieNode* root, const string& word) {
     }
     return false;
 }
+
+int main() {
+
+    TrieNode* root_ptr = createNode();
+
+    cout << "1. Inserting: 'read', 'ready', 'reader'\n";
+    insert(root_ptr, "read");
+    insert(root_ptr, "ready");
+    insert(root_ptr, "reader");
+
+    cout << "\n2. Searching:\n";
+    cout << "Is 'read' present? " << (search(root_ptr, "read") ? "YES" : "NO") << "\n"; // YES
+    cout << "Is 'rea' present? " << (search(root_ptr, "rea") ? "YES" : "NO") << "\n";   // NO (only prefix)
+    cout << "Is 'ready' present? " << (search(root_ptr, "ready") ? "YES" : "NO") << "\n"; // YES
+
+    cout << "\n3. Deleting 'read' \n";
+    delete(root_ptr, "read");
+
+    cout << "\n4. Checking state after deletion:\n";
+    cout << "Is 'read' present now? " << (search(root_ptr, "read") ? "YES" : "NO") << "\n"; // NO
+    cout << "Is 'ready' present? " << (search(root_ptr, "ready") ? "YES" : "NO") << "\n"; // YES (Still valid)
+
+    delete root_ptr;
+    return 0;
+}

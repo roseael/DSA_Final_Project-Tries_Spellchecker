@@ -5,7 +5,7 @@
 using namespace std;
 
 const int Alphabet_Size = 26;
-
+const int MAX_EDIT_DISTANCE = 2;
 struct TrieNode {
     TrieNode* children[Alphabet_Size];
 
